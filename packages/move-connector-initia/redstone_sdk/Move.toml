@@ -1,0 +1,15 @@
+[package]
+name = "redstone_sdk"
+version = "1.0.0"
+authors = []
+
+[addresses]
+redstone_sdk="_"
+
+[dev-addresses]
+redstone_sdk="0xedeed"
+
+[dependencies.InitiaStdlib]
+git = "https://github.com/initia-labs/movevm.git"
+subdir = "precompile/modules/initia_stdlib"
+rev = "main"
