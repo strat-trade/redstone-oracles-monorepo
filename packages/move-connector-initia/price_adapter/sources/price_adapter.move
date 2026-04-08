@@ -171,7 +171,8 @@ module redstone_price_adapter::price_adapter {
         let feed_id = *feed::feed_id(feed);
         let price_data = get_or_create_default(price_adapter, feed);
 
-        assert!(timestamp > price_data_timestamp(price_data), E_DATA_TOO_OLD);
+        if (timestamp <= price_data_timestamp(price_data)) return
+
         update(
             price_data,
             feed_id,
