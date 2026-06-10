@@ -30,7 +30,6 @@ module redstone_sdk::validate {
     const REDSTONE_MARKER_LEN: u64 = 9;
 
     // === Public Functions ===
-
     public fun verify_data_packages(
         data_packages: &vector<DataPackage>, config: &Config, current_timestamp: u64
     ) {
@@ -44,9 +43,7 @@ module redstone_sdk::validate {
         );
 
         verify_signer_count(
-            data_packages,
-            signer_count_threshold(config),
-            &signers(config)
+            data_packages, signer_count_threshold(config), &signers(config)
         );
     }
 
@@ -92,7 +89,6 @@ module redstone_sdk::validate {
     }
 
     // === Private Functions ===
-
     fun verify_timestamps_are_the_same(
         data_packages: &vector<DataPackage>
     ) {
@@ -102,7 +98,8 @@ module redstone_sdk::validate {
         let data_package_len = vector::length(data_packages);
         for (i in 1..data_package_len) {
             assert!(
-                timestamp(vector::borrow(data_packages, i)) == ts, E_TIMESTAMP_MISMATCH
+                timestamp(vector::borrow(data_packages, i)) == ts,
+                E_TIMESTAMP_MISMATCH
             );
         };
     }
@@ -145,9 +142,9 @@ module redstone_sdk::validate {
     }
 
     // === Tests Functions ===
-
     #[test_only]
     use redstone_sdk::config::test_config;
+
     #[test_only]
     use redstone_sdk::data_package::new_data_package;
 
@@ -212,9 +209,7 @@ module redstone_sdk::validate {
         let config = test_config();
 
         verify_timestamp(
-            1000 + max_timestamp_ahead_ms(&config) + 1,
-            &config,
-            1000
+            1000 + max_timestamp_ahead_ms(&config) + 1, &config, 1000
         );
     }
 
@@ -225,9 +220,7 @@ module redstone_sdk::validate {
         let value = 1_000_000;
 
         verify_timestamp(
-            value - max_timestamp_delay_ms(&config) - 1,
-            &config,
-            value
+            value - max_timestamp_delay_ms(&config) - 1, &config, value
         );
     }
 

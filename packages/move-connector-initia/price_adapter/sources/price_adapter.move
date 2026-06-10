@@ -44,7 +44,6 @@ module redstone_price_adapter::price_adapter {
     const E_INVALID_FEED_ID: u64 = 2;
 
     // === Structs ===
-
     struct PriceAdapter has key {
         id: address,
         prices: Table<u256, PriceData>
@@ -81,7 +80,6 @@ module redstone_price_adapter::price_adapter {
     }
 
     // === Entry-Mutative Functions ===
-
     public entry fun write_price(
         price_adapter_address: address, feed_id: vector<u8>, payload: vector<u8>
     ) acquires PriceAdapter {
@@ -99,11 +97,8 @@ module redstone_price_adapter::price_adapter {
     }
 
     // === Private Functions ===
-
     fun write_new_prices(
-        price_adapter: &mut PriceAdapter,
-        feed_ids: &vector<vector<u8>>,
-        payload: vector<u8>
+        price_adapter: &mut PriceAdapter, feed_ids: &vector<vector<u8>>, payload: vector<u8>
     ) {
         let timestamp_now_ms = block::get_current_block_timestamp_microseconds() / 1000;
         let (aggregated_values, timestamp) =
@@ -171,7 +166,7 @@ module redstone_price_adapter::price_adapter {
         let feed_id = *feed::feed_id(feed);
         let price_data = get_or_create_default(price_adapter, feed);
 
-        if (timestamp <= price_data_timestamp(price_data)) return
+        if (timestamp <= price_data_timestamp(price_data)) { return };
 
         update(
             price_data,
@@ -202,7 +197,6 @@ module redstone_price_adapter::price_adapter {
     }
 
     // === Public-View Functions ===
-
     #[view]
     public fun price_and_timestamp_by_address(
         price_adapter_address: address, feed_id: vector<u8>

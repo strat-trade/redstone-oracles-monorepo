@@ -8,7 +8,6 @@ module redstone_sdk::median {
     const E_MEDIAN_ERROR_EMPTY_VECTOR: u64 = 0;
 
     // === Public Functions ===
-
     public fun calculate_median(values: &mut vector<u256>): u256 {
         let len = vector::length(values);
         assert!(len > 0, E_MEDIAN_ERROR_EMPTY_VECTOR);
@@ -79,7 +78,6 @@ module redstone_sdk::median {
     }
 
     // === Test Functions ===
-
     #[test]
     fun test_median() {
         let values = vector[1, 3, 2];

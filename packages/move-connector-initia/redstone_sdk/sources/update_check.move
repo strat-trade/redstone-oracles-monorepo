@@ -8,7 +8,6 @@ module redstone_sdk::update_check {
     const E_UPDATE_TOO_SOON: u64 = 0;
 
     // === Public Functions ===
-
     public fun assert_update_time(
         trusted_updaters: &vector<address>,
         min_interval_between_updates_ms: u64,
@@ -28,7 +27,6 @@ module redstone_sdk::update_check {
     }
 
     // === Private Functions ===
-
     fun sender_in_trusted(
         trusted_updaters: &vector<address>, sender: address
     ): bool {

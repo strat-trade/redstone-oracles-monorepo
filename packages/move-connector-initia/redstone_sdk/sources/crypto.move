@@ -47,9 +47,7 @@ module redstone_sdk::crypto {
         };
         let public_key =
             secp256k1::ecdsa_recover(
-                keccak256(*msg),
-                v,
-                &secp256k1::ecdsa_signature_from_bytes(sig)
+                keccak256(*msg), v, &secp256k1::ecdsa_signature_from_bytes(sig)
             );
         assert!(option::is_some(&public_key), E_INVALID_SIGNATURE);
         let public_key =
@@ -63,7 +61,6 @@ module redstone_sdk::crypto {
     }
 
     // === Private Functions ===
-
     fun check_s(signature: &vector<u8>) {
         // signature = [r0..r31][s0..s31][v]
         let s = vector::empty();
@@ -90,7 +87,6 @@ module redstone_sdk::crypto {
     }
 
     // === Test Functions ===
-
     #[test]
     fun test_recover_signature() {
         let signature =

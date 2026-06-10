@@ -8,7 +8,6 @@ module redstone_sdk::vector {
     const E_INSUFFICIENT_LENGTH: u64 = 0;
 
     // === Public Functions ===
-
     public fun trim_end(v: &mut vector<u8>, len: u64): vector<u8> {
         let v_len = vector::length(v);
         assert!(len <= v_len, E_INSUFFICIENT_LENGTH);
@@ -35,7 +34,6 @@ module redstone_sdk::vector {
     }
 
     // === Test Functions ===
-
     #[test_only]
     const PAYLOAD: vector<u8> = x"000002ed57011e0000";
 

@@ -2,7 +2,6 @@ module redstone_sdk::data_package {
     // === Imports ===
 
     // === Structs ===
-
     struct DataPoint has copy, drop {
         feed_id: vector<u8>,
         value: vector<u8>
@@ -15,7 +14,6 @@ module redstone_sdk::data_package {
     }
 
     // === Public Functions ===
-
     public fun new_data_package(
         signer_address: vector<u8>, timestamp: u64, data_points: vector<DataPoint>
     ): DataPackage {

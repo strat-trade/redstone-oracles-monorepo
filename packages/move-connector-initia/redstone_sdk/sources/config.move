@@ -10,7 +10,6 @@ module redstone_sdk::config {
     const E_SIGNERS_ARE_NOT_UNIQUE: u64 = 2;
 
     // === Structs ===
-
     struct Config has copy, drop, store {
         signer_count_threshold: u8,
         signers: vector<vector<u8>>,
@@ -19,7 +18,6 @@ module redstone_sdk::config {
     }
 
     // === Public Functions ===
-
     public fun new(
         signer_count_threshold: u8,
         signers: vector<vector<u8>>,
@@ -73,7 +71,6 @@ module redstone_sdk::config {
     }
 
     // === Tests Functions ===
-
     #[test_only]
     public fun test_config(): Config {
         new(

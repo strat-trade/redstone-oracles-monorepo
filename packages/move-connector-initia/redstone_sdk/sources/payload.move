@@ -43,13 +43,11 @@ module redstone_sdk::payload {
     const MAX_VALUE_SIZE: u64 = 32;
 
     // === Structs ===
-
     struct Payload has copy, drop {
         data_packages: vector<DataPackage>
     }
 
     // === Public Functions ===
-
     public fun process_payload(
         config: &Config,
         timestamp_now_ms: u64,
@@ -93,13 +91,11 @@ module redstone_sdk::payload {
     }
 
     // === Public-View Functions ===
-
     public fun data_packages(payload: &Payload): vector<DataPackage> {
         payload.data_packages
     }
 
     // === Private Functions ===
-
     fun parse_raw_payload(payload: &mut vector<u8>): Payload {
         verify_and_trim_redstone_marker(payload);
 
@@ -243,7 +239,6 @@ module redstone_sdk::payload {
     }
 
     // === Tests Functions ===
-
     #[test_only]
     use redstone_sdk::config::test_config;
 

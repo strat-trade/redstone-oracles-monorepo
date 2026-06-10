@@ -12,7 +12,6 @@ module redstone_sdk::conv {
     const HEX_BASE_SHIFT_BY: u8 = 8;
 
     // === Public Functions ===
-
     public fun from_bytes_to_u256(bytes: &vector<u8>): u256 {
         let result = 0;
         let len = vector::length(bytes);
@@ -40,7 +39,6 @@ module redstone_sdk::conv {
     }
 
     // === Test Functions ===
-
     #[test_only]
     fun test_u64(bytes: &vector<u8>, expected_number: u64) {
         let out = from_bytes_to_u64(bytes);
