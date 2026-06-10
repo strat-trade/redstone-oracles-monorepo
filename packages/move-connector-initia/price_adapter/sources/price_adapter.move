@@ -240,4 +240,9 @@ module redstone_price_adapter::price_adapter {
     public fun signer_count_threshold(): u8 {
         SIGNER_COUNT_THRESHOLD
     }
+
+    #[test_only]
+    public fun init_for_test(account: &signer) {
+        new(account);
+    }
 }
