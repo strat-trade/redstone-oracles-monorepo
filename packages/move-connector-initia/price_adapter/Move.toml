@@ -3,7 +3,6 @@ name = "price_adapter"
 version = "1.0.0"
 authors = ["redstone"]
 license="GPL"
-upgrade_policy = "compatible"
 
 [addresses]
 redstone_price_adapter = "_"
