@@ -100,7 +100,7 @@ module redstone_price_adapter::price_adapter {
     fun write_new_prices(
         price_adapter: &mut PriceAdapter, feed_ids: &vector<vector<u8>>, payload: vector<u8>
     ) {
-        let timestamp_now_ms = block::get_current_block_timestamp_microseconds() / 1000;
+        let timestamp_now_ms = block::get_current_block_timestamp() * 1000;
         let (aggregated_values, timestamp) =
             process_payload_for_feed_ids(timestamp_now_ms, feed_ids, payload);
 
